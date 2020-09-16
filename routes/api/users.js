@@ -1,5 +1,7 @@
 const express = require('express');
 const router = express.Router();
+
+//CAN YOU USE BODY INSTEAD OF CHECK ACCORDING TO NEW DOCUMENTATION AS THEY WORK THE SAME NOW: {body, validationResult}
 const { check, validationResult } = require('express-validator');
 const jwt = require('jsonwebtoken');
 const gravatar = require('gravatar');
@@ -13,6 +15,7 @@ const User = require('../../models/User');
 router.post(
   '/',
   [
+    //CHECK CAN BE REPLACED BY BODY IT PROVIDES THE SAME FUNCTIONALITY: body('name', 'Name is Required').not().isEmpty()
     check('name', 'Name is Required').not().isEmpty(),
     check('email', 'Please Include a valid Email').isEmail(),
     check(

@@ -1,6 +1,7 @@
 const express = require('express');
 const router = express.Router();
 const auth = require('../../middleware/auth');
+//CAN YOU USE BODY INSTEAD OF CHECK ACCORDING TO NEW DOCUMENTATION AS THEY WORK THE SAME NOW: {body, validationResult}
 const { check, validationResult } = require('express-validator');
 const jwt = require('jsonwebtoken');
 const config = require('config');
@@ -27,6 +28,7 @@ router.get('/', auth, async (req, res) => {
 router.post(
   '/',
   [
+    //CHECK CAN BE REPLACED BY BODY IT PROVIDES THE SAME FUNCTIONALITY: body('email', 'Please Include a valid Email').isEmail(),
     check('email', 'Please Include a valid Email').isEmail(),
     check('password', 'Password is required').exists(),
   ],
