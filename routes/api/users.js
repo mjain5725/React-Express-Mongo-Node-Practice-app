@@ -57,10 +57,10 @@ router.post(
         password,
       });
 
-      //SALT FOR ENCRYPTION OF PASSWORD
+      //SALT FOR ENCRYPTION OF PASSWORD (Encryption strength)
       const salt = await bcrypt.genSalt(10);
 
-      //HASING THE PASSWORD USING SALT OR ENCRYPTING THE PASS WORD
+      //HASHING THE PASSWORD USING SALT OR ENCRYPTING THE PASS WORD
       user.password = await bcrypt.hash(password, salt);
 
       //SAVING THE USER AND USE AWAIT TO AVOID WRITING THEN.. WHICH EVER RETURNS PROMISE USE AWAIT IN FRONT
