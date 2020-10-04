@@ -1,10 +1,10 @@
 import React, { Fragment, useState } from 'react';
 import { connect } from 'react-redux';
 import { Link } from 'react-router-dom';
-import { setAlert } from '../../actions/alert';
+import * as actions from '../../store/actions/index';
 import PropTypes from 'prop-types';
 
-const Register = ({ setAlert }) => {
+const Register = props => {
   const [formData, setFormData] = useState({
     name: '',
     email: '',
@@ -20,28 +20,10 @@ const Register = ({ setAlert }) => {
   const onSubmit = async e => {
     e.preventDefault();
     if (password !== password2) {
-      setAlert('Password Do not match', 'danger');
+      props.setAlert('Password Do not match', 'danger');
     } else {
       console.log(formData);
-      // const newUser = {
-      //   name,
-      //   email,
-      //   password,
-      // };
-
-      // try {
-      //   const config = {
-      //     headers: {
-      //       'Content-Type': 'application/json',
-      //     },
-      //   };
-
-      //   const body = JSON.stringify(newUser);
-      //   const res = await axios.post('/api/users', body, config);
-      //   console.log(res.data);
-      // } catch (err) {
-      //   console.error(err.response.data);
-      // }
+      props.register({ name, email, password });
     }
   };
 
@@ -109,6 +91,15 @@ const Register = ({ setAlert }) => {
 
 Register.propTypes = {
   setAlert: PropTypes.func.isRequired,
+  register: PropTypes.func.isRequired,
 };
 
-export default connect(null, { setAlert })(Register);
+const mapDispatchToProps = dispatch => {
+  return {
+    setAlert: (msg, alertType) => dispatch(actions.setAlert(msg, alertType)),
+    register: ({ name, email, password }) =>
+      dispatch(actions.register({ name, email, password })),
+  };
+};
+
+export default connect(null, mapDispatchToProps)(Register);
