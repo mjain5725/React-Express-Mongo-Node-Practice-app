@@ -85,5 +85,6 @@ export const login = (email, password) => async dispatch => {
 
 //LOGOUT / CLEAR PROFILE
 export const logout = () => dispatch => {
+  dispatch({ type: actionType.CLEAR_PROFILE });
   dispatch({ type: actionType.LOGOUT });
 };
