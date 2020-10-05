@@ -1,2 +1,2 @@
 export { setAlert } from './alert';
-export { register } from './auth';
+export { register, loadUser, login } from './auth';
