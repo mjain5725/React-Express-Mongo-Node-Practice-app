@@ -82,3 +82,8 @@ export const login = (email, password) => async dispatch => {
     });
   }
 };
+
+//LOGOUT / CLEAR PROFILE
+export const logout = () => dispatch => {
+  dispatch({ type: actionType.LOGOUT });
+};
