@@ -6,6 +6,7 @@ const { check, validationResult } = require('express-validator');
 const config = require('config');
 const Profile = require('../../models/Profile');
 const User = require('../../models/User');
+const Post = require('../../models/Post');
 
 //@route  GET api/profile/me
 //@desc   Get current users PROFILE
@@ -67,7 +68,10 @@ router.post(
     if (status) profileFields.status = status;
     if (githubusername) profileFields.githubusername = githubusername;
     if (skills) {
-      profileFields.skills = skills.split(',').map(skill => skill.trim());
+      profileFields.skills = skills
+        .toString()
+        .split(',')
+        .map(skill => skill.trim());
     }
 
     //BUILD SOCIAL OBJECT
@@ -80,6 +84,7 @@ router.post(
 
     try {
       let profile = await Profile.findOne({ user: req.user.id });
+      console.log(req.user);
 
       if (profile) {
         //UPDATE
@@ -90,7 +95,6 @@ router.post(
         );
         return res.json(profile);
       }
-
       //CREATE
       profile = new Profile(profileFields);
       await profile.save();
@@ -142,6 +146,8 @@ router.get('/user/:user_id', async (req, res) => {
 //@access Private
 router.delete('/', auth, async (req, res) => {
   try {
+    //REMOVE POSTS
+    await Post.deleteMany({ user: user.req.id });
     //REMOVE PROFILE
     await Profile.findOneAndRemove({ user: req.user.id });
     //REMOVE USER

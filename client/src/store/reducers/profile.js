@@ -2,7 +2,7 @@ import * as actionType from '../actions/types';
 
 const initialState = {
   profile: null,
-  proiles: [],
+  profiles: [],
   repos: [],
   loading: true,
   error: {},
@@ -13,9 +13,16 @@ export default function (state = initialState, action) {
 
   switch (type) {
     case actionType.GET_PROFILE:
+    case actionType.UPDATE_PROFILE:
       return {
         ...state,
         profile: payload,
+        loading: false,
+      };
+    case actionType.GET_ALLPROFILES:
+      return {
+        ...state,
+        profiles: payload,
         loading: false,
       };
     case actionType.PROFILE_ERROR:
@@ -29,6 +36,12 @@ export default function (state = initialState, action) {
         ...state,
         profile: null,
         repos: [],
+        loading: false,
+      };
+    case actionType.GET_REPOS:
+      return {
+        ...state,
+        repos: payload,
         loading: false,
       };
     default:
