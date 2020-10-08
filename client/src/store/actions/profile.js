@@ -5,7 +5,7 @@ import * as actions from './index';
 //GET CURRENT USERS PROFILE
 export const getCurrentProfile = () => async dispatch => {
   try {
-    const res = await axios.get('api/profile/me');
+    const res = await axios.get('/api/profile/me');
 
     dispatch({
       type: actionType.GET_PROFILE,
@@ -24,7 +24,7 @@ export const getProfiles = () => async dispatch => {
   dispatch({ type: actionType.CLEAR_PROFILE });
 
   try {
-    const res = await axios.get('api/profile');
+    const res = await axios.get('/api/profile');
 
     dispatch({
       type: actionType.GET_ALLPROFILES,
@@ -41,8 +41,7 @@ export const getProfiles = () => async dispatch => {
 //GET PROFILE BY ID
 export const getProfileById = userId => async dispatch => {
   try {
-    const res = await axios.get(`api/profile/user/${userId}`);
-
+    const res = await axios.get(`/api/profile/user/${userId}`);
     dispatch({
       type: actionType.GET_PROFILE,
       payload: res.data,
@@ -58,7 +57,7 @@ export const getProfileById = userId => async dispatch => {
 //GET GITHUB REPOS
 export const getGithubRepos = username => async dispatch => {
   try {
-    const res = await axios.get(`api/profile/github/${username}`);
+    const res = await axios.get(`/api/profile/github/${username}`);
 
     dispatch({
       type: actionType.GET_REPOS,
@@ -213,7 +212,7 @@ export const deleteEducation = id => async dispatch => {
 export const deleteAccount = () => async dispatch => {
   if (window.confirm('Do you want to delete your account! Are you sure?')) {
     try {
-      const res = await axios.delete('/api/profile');
+      await axios.delete('/api/profile');
 
       dispatch({
         type: actionType.CLEAR_PROFILE,
