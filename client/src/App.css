@@ -405,6 +405,12 @@ button {
   text-align: center;
 }
 
+.profile-about .newskills {
+  align-items: center;
+  justify-content: center;
+  text-align: center;
+}
+
 .profile-exp {
   grid-area: exp;
 }
