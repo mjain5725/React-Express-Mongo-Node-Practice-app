@@ -325,10 +325,11 @@ router.get('/github/:username', async (req, res) => {
       method: 'GET',
       headers: { 'user-agent': 'node.js' },
     };
+    
 
     request(options, (error, response, body) => {
       if (error) console.log(error);
-
+      console.log(body)
       if (response.statusCode !== 200) {
         return res.status(404).json({ msg: 'No Github Profile found' });
       }

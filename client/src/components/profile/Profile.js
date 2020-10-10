@@ -6,6 +6,7 @@ import PropTypes from 'prop-types';
 import ProfileTop from './ProfileTop';
 import ProfileAbout from './ProfileAbout';
 import ProfileExperience from './ProfileExperience';
+import ProfileGithub from './ProfileGithub';
 import { Link } from 'react-router-dom';
 import ProfileEducation from './ProfileEducation';
 
@@ -69,6 +70,9 @@ const Profile = ({
                 <h4>No education credentials</h4>
               )}
             </div>
+            {profile.githubusername && (
+              <ProfileGithub  username={profile.githubusername}/>
+            )}
           </div>
         </Fragment>
       )}
