@@ -8,8 +8,8 @@ const ProfileExperience = ({
   <div>
     <h3 className='text-dark'>{company}</h3>
     <p>
-      <Moment format='YYYY/MM/DD'>{from}</Moment> -{' '}
-      {!to ? 'now' : <Moment forma='YYYY/MM/DD'>{to}</Moment>}
+      <Moment format='DD/MM/YYYY'>{from}</Moment> -{' '}
+      {!to ? 'now' : <Moment format='DD/MM/YYYY'>{to}</Moment>}
     </p>
     <p>
       <strong>Position: </strong>
