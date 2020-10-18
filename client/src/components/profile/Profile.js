@@ -37,6 +37,7 @@ const Profile = ({
                 Edit Profile
               </Link>
             )}
+            <Link to='/posts' className='btn btn-primary'> Posts</Link>
           <div className='profile-grid my-1'>
             <ProfileTop profile={profile} />
             <ProfileAbout profile={profile} />

@@ -8,7 +8,10 @@ const Navbar = props => {
   const authLinks = (
     <ul>
       <li>
-        <Link to='/profiles'>Developers</Link>
+        <Link to='/profiles'>Users</Link>
+      </li>
+      <li>
+        <Link to='/posts'>Posts</Link>
       </li>
       <li>
         <Link to='/dashboard'>

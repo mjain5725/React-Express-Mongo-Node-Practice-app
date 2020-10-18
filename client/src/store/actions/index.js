@@ -12,3 +12,4 @@ export {
   deleteExperience,
   deleteAccount,
 } from './profile';
+export {getPosts , addLike, removeLike, deletePost, addPost, getPost, addComment, deleteComment} from './post';

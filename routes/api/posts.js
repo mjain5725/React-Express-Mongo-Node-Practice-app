@@ -42,6 +42,12 @@ router.post(
 //@access Private
 router.get('/', auth, async (req, res) => {
   try {
+    // const post = await Post.find();
+    // post.forEach(ps => {
+    //   ps.comments.forEach(comment => {
+    //     console.log(comment.user);
+    //   })
+    // })
     const posts = await Post.find().sort({ date: -1 });
     res.json(posts);
   } catch (err) {
